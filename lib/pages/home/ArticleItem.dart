@@ -1,8 +1,13 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:ycflutter/api/AndroidApi.dart';
+import 'package:ycflutter/api/HttpUtils.dart';
+import 'package:ycflutter/pages/detail/ArticleDetailPage.dart';
+import 'package:ycflutter/pages/me/LoginPage.dart';
 import 'package:ycflutter/res/YcColors.dart';
 import 'package:ycflutter/utils/StringUtils.dart';
+import 'package:ycflutter/utils/UserUtils.dart';
 
 /*
  * <pre>
@@ -56,7 +61,8 @@ class ArticleView  extends State<ArticleItem> {
       child: new InkWell(
         child: column,
         onTap: () {
-          ///条目点击事件
+          //条目点击事件
+          onItemClick(widget.itemData);
         },
       ),
     );
@@ -84,6 +90,7 @@ class ArticleView  extends State<ArticleItem> {
           ),
           onTap: () {
             //收藏点击事件
+            onCollectClick(widget.itemData);
           },
         ),
         new GestureDetector(
@@ -92,7 +99,8 @@ class ArticleView  extends State<ArticleItem> {
             color: isCollect ? YcColors.colorRed : null,
           ),
           onTap: () {
-            //收藏点击事件
+            //分享点击事件
+            onShareClick(widget.itemData);
           },
         ),
       ],
@@ -160,5 +168,56 @@ class ArticleView  extends State<ArticleItem> {
       ],
     );
     return column;
+  }
+
+  //条目点击事件
+  //更多查看：https://github.com/yangchong211/YCBlogs
+  void onItemClick(itemData) async {
+    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      return new ArticleDetailPage(
+        title: itemData['title'],
+        url: itemData['link'],
+      );
+    }));
+  }
+
+  //收藏点击事件
+  //更多查看：https://github.com/yangchong211/YCBlogs
+  void onCollectClick(itemData) {
+    UserUtils.isLogin().then((isLogin) {
+      if (!isLogin) {
+        startLogin();
+      } else {
+        collectItem(itemData);
+      }
+    });
+  }
+
+  //开始登陆，跳转登陆的页面
+  void startLogin() {
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      return new LoginPage();
+    }));
+  }
+
+  //收藏或者取消收藏
+  void collectItem(itemData) {
+    String url;
+    if (itemData['collect']) {
+      url = AndroidApi.UN_COLLECT_ORIGIN;
+    } else {
+      url = AndroidApi.COLLECT;
+    }
+    url += '${itemData["id"]}/json';
+    HttpUtils.post(url, (data) {
+      setState(() {
+        itemData['collect'] = !itemData['collect'];
+      });
+    });
+  }
+
+  //开始分享
+  void onShareClick(itemData) {
+
   }
 }

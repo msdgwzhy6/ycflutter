@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:ycflutter/pages/detail/ArticleDetailPage.dart';
 import 'package:ycflutter/pages/me/AboutMePage.dart';
+import 'package:ycflutter/pages/me/MeCollectPage.dart';
 import 'package:ycflutter/res/YcColors.dart';
 import 'package:ycflutter/weight/ItemLine.dart';
 
@@ -33,6 +34,8 @@ class MeState extends State<MePage> {
     var itemLine2 = new ItemLine();
     Widget listLogout = initLogoutWidget();
     var itemLine3 = new ItemLine();
+    Widget listCollect = initCollectWidget();
+    var itemLine4 = new ItemLine();
     Widget listGit = initGitWidget();
     Widget listBlog = initBlogWidget();
 
@@ -47,6 +50,7 @@ class MeState extends State<MePage> {
         itemLine2,
         listLogout,
         itemLine3,
+        itemLine4,
         listGit,
         listBlog,
       ],
@@ -91,6 +95,21 @@ class MeState extends State<MePage> {
     return layout;
   }
 
+  Widget initCollectWidget() {
+    Widget layout = new ListTile(
+        leading: const Icon(Icons.collections),
+        title: const Text('我的收藏'),
+        trailing:  Icon(Icons.arrow_forward, color: YcColors.colorPrimary),
+        onTap: () async {
+
+          Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+            return new MeCollectPage();
+          }));
+        });
+    return layout;
+  }
+
+
   Widget initGitWidget() {
     Widget layout = new ListTile(
         leading: const Icon(Icons.crop_original),
@@ -127,5 +146,6 @@ class MeState extends State<MePage> {
         });
     return layout;
   }
+
 
 }

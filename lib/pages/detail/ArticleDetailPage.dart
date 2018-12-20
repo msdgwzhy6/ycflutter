@@ -5,7 +5,7 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
  * <pre>
  *     @author yangchong
  *     blog  : https://github.com/yangchong211
- *     time  : 2018/9/12
+ *     time  : 2018/10/12
  *     desc  : 文章详情界面
  *     revise:
  * </pre>

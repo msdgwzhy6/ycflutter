@@ -45,7 +45,7 @@ class HomeState extends State<HomePage> {
   Widget build(BuildContext context) {
     //不要用下面这个方式判空
     //var isEmpty = listData.isEmpty;
-    if(listData == null){
+    if(listData == null || listData.length == 0){
       //展示progress
       return new Center(
         child: new CircularProgressIndicator(),
@@ -156,6 +156,7 @@ class HomeState extends State<HomePage> {
     return new ArticleItem(itemData);
   }
 
+  //添加头部轮播图，
   Widget addHeader(int i) {
     var container = new Container(height: 180.0, child: bannerView,);
     Row content = new Row(
