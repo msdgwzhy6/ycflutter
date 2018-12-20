@@ -1,0 +1,29 @@
+name: ycflutter
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^0.1.2
+  # 添加依赖的包
+  http: '>=0.11.3+12'
+  flutter_webview_plugin: "^0.3.0+2"
+  shared_preferences: "^0.4.1"
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/image/ic_launcher_round.png
+    - lib/image/zhy.jpg
