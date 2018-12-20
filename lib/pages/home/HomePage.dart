@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:ycflutter/api/AndroidApi.dart';
 import 'package:ycflutter/api/HttpUtils.dart';
 import 'package:ycflutter/common/Constants.dart';
+import 'package:ycflutter/pages/detail/ArticleDetailPage.dart';
 import 'package:ycflutter/pages/home/ArticleItem.dart';
+import 'package:ycflutter/res/YcColors.dart';
 import 'package:ycflutter/weight/BannerView.dart';
 import 'package:ycflutter/weight/EndLine.dart';
 
@@ -41,7 +43,8 @@ class HomeState extends State<HomePage> {
   //这个方法必须写
   @override
   Widget build(BuildContext context) {
-    var isEmpty = listData.isEmpty;
+    //不要用下面这个方式判空
+    //var isEmpty = listData.isEmpty;
     if(listData == null){
       //展示progress
       return new Center(
@@ -139,15 +142,65 @@ class HomeState extends State<HomePage> {
 
 
   Widget buildItem(int i) {
+    //添加header头部
     if (i == 0) {
-      return new Container(height: 180.0, child: bannerView,);
+      return addHeader(i);
     }
     i -= 1;
     var itemData = listData[i];
+    //添加没有更多
     if (itemData is String && itemData == Constants.complete) {
       return new EndLine();
     }
+    //添加博文item
     return new ArticleItem(itemData);
+  }
+
+  Widget addHeader(int i) {
+    var container = new Container(height: 180.0, child: bannerView,);
+    Row content = new Row(
+      children: <Widget>[
+        new Text('潇湘剑雨：'),
+        new Expanded(
+          child: new Text(
+            'wanAndroid最新博文',
+            softWrap: true,
+            style: new TextStyle(color: YcColors.colorIndigo),
+            textAlign: TextAlign.left,
+            maxLines: 1,
+          ),
+        ),
+      ],
+    );
+    //return content;
+    Column column = new Column(
+      children: <Widget>[
+        new Padding(
+          padding: EdgeInsets.all(0.0),
+          child: container,
+        ),
+        new Padding(
+          padding: EdgeInsets.fromLTRB(5.0, 15.0, 0.0, 15.0),
+          child: content,
+        ),
+      ],
+    );
+    return new Card(
+      elevation: 0.1,
+      child: new InkWell(
+        child: column,
+        onTap: () {
+          Navigator
+              .of(context)
+              .push(new MaterialPageRoute(builder: (context) {
+            return new ArticleDetailPage(
+              title: '潇湘剑雨',
+              url: 'https://github.com/yangchong211/YCBlogs',
+            );
+          }));
+        },
+      ),
+    );
   }
 
 }

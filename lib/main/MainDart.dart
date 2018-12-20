@@ -39,11 +39,12 @@ class MainDartState extends State<MainDart> with TickerProviderStateMixin {
 
       //设置home
       home: new Scaffold(
+        //设置appBar
         appBar: new AppBar(
           //title
           title: new Text(
             mainTitles[positionIndex],
-            style: new TextStyle(color: Colors.white , fontSize: 20 , fontWeight: FontWeight.bold),
+            style: new TextStyle(color: Colors.white , fontSize: 18 , fontWeight: FontWeight.bold),
           ),
 
           //这个相当于actionBar上的menu
