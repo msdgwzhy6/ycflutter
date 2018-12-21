@@ -16,7 +16,7 @@
 ### 00.项目下载与查看
 #### 0.1 下载apk
 - 已经打包好的apk存放到项目根目录apk文件夹下，可以直接下载安装。建议先安装看看效果！
-- [apk下载地址]()
+- [apk下载地址](https://github.com/yangchong211/ycflutter/tree/master/apk)
 
 
 #### 0.2 项目
@@ -26,7 +26,7 @@
 
 #### 0.3 案例演示
 - 努力打造一款flutter极致体验的WanAndroid客户端，暂时我也是学习阶段，后期慢慢更新！
-
+![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/flutter.gif)
 
 #### 0.4 项目测试账号和密码
 - 接口是接用wanAndroid开放的接口，感谢鸿洋大神提供免费的开源接口。只是用于训练flutter案例，请勿商用。如需商用，请直接联系鸿洋大神623565791！
