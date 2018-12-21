@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:ycflutter/pages/detail/ArticleDetailPage.dart';
 import 'package:ycflutter/pages/me/AboutMePage.dart';
-import 'package:ycflutter/pages/me/CollectListPage.dart';
+import 'package:ycflutter/pages/me/MeCollectPage.dart';
 import 'package:ycflutter/pages/me/LoginPage.dart';
 import 'package:ycflutter/res/YcColors.dart';
 import 'package:ycflutter/utils/UserUtils.dart';
@@ -161,9 +161,17 @@ class MeState extends State<MePage> {
         title: const Text('我的收藏'),
         trailing:  Icon(Icons.arrow_forward, color: YcColors.colorPrimary),
         onTap: () async {
-          Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-            return new CollectPage();
-          }));
+          UserUtils.isLogin().then((isLogin) {
+            if (!isLogin) {
+              //没有登陆
+              print('没有登陆');
+            } else {
+              //已经登陆
+              Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+                return new CollectPage();
+              }));
+            }
+          });
         });
     return layout;
   }

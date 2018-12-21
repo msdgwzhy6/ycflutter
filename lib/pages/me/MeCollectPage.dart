@@ -25,21 +25,21 @@ class CollectPage extends StatelessWidget{
       appBar: new AppBar(
         title: new Text('我收藏的文章'),
       ),
-      body: new CollectListPage(),
+      body: new MeCollectPage(),
     );
   }
 }
 
 
-class CollectListPage extends StatefulWidget {
-  CollectListPage();
+class MeCollectPage extends StatefulWidget {
+  MeCollectPage();
   @override
   State<StatefulWidget> createState() {
-    return new CollectListPageState();
+    return new MeCollectPageState();
   }
 }
 
-class CollectListPageState extends State<CollectListPage> {
+class MeCollectPageState extends State<MeCollectPage> {
 
   int curPage = 0;
   Map<String, String> map = new Map();
@@ -55,7 +55,6 @@ class CollectListPageState extends State<CollectListPage> {
       );
     } else {
       Widget listView = new ListView.builder(
-        //
         physics: new AlwaysScrollableScrollPhysics(),
         itemCount: listData.length,
         itemBuilder: (context, i) => buildItem(i),
@@ -78,7 +77,8 @@ class CollectListPageState extends State<CollectListPage> {
     super.dispose();
   }
 
-
+  //获取收藏接口的数据
+  //更多可以看：https://github.com/yangchong211/YCBlogs
   void getCollectList() {
     String url = AndroidApi.COLLECT_LIST;
     url += "$curPage/json";

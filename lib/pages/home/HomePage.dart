@@ -66,6 +66,7 @@ class HomeState extends State<HomePage> {
   }
 
   //初始化操作
+  //更多可以看：https://github.com/yangchong211/YCBlogs
   @override
   void initState() {
     super.initState();
