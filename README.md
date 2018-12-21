@@ -68,6 +68,7 @@
 ![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/3.jpg)
 ![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/4.jpg)
 ![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/5.jpg)
+![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/15.jpg)
 ![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/6.jpg)
 ![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/7.jpg)
 ![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/8.jpg)
@@ -104,7 +105,7 @@
     - 打开手机的“开发者模式”
     - 打开“显示布局边界”
     - 切回APP，然后看看app中的UI效果
-![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/12.jpg)
+- ![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/12.jpg)
 ![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/13.jpg)
 ![image](https://github.com/yangchong211/ycflutter/blob/master/iamge/14.jpg)
 
