@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:ycflutter/res/YcColors.dart';
 
+
+/*
+ * <pre>
+ *     @author yangchong
+ *     blog  : https://github.com/yangchong211
+ *     time  : 2018/9/11
+ *     desc  : 加载view
+ *     revise:
+ * </pre>
+ */
 class EndLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,7 +23,7 @@ class EndLine extends StatelessWidget {
             child: new Divider(height: 10.0,),
             flex: 1,
           ),
-          new Text("我是有底线的",style: new TextStyle(color: Theme.of(context).accentColor),),
+          new Text("没有更多数据呢！",style: new TextStyle(color: YcColors.colorPrimary),),
           new Expanded(
             child: new Divider(height: 10.0,),
             flex: 1,
@@ -34,7 +45,7 @@ class NoData extends StatelessWidget {
             child: new Divider(height: 10.0,),
             flex: 1,
           ),
-          new Text("暂无数据",style: new TextStyle(color: Theme.of(context).accentColor),),
+          new Text("暂时没有数据",style: new TextStyle(color: YcColors.colorPrimary),),
           new Expanded(
             child: new Divider(height: 10.0,),
             flex: 1,

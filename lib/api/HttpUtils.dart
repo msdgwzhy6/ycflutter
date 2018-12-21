@@ -6,6 +6,7 @@ import 'package:ycflutter/api/AndroidApi.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ycflutter/utils/ToastUtils.dart';
 
 /*
  * <pre>
@@ -37,6 +38,7 @@ class HttpUtils{
       String paramStr = sb.toString();
       paramStr = paramStr.substring(0, paramStr.length - 1);
       url += paramStr;
+      ToastUtils.showPrint(url);
     }
     await startRequest(url, callback, method: GET, headers: headers,
         errorCallback: errorCallback);
@@ -64,14 +66,21 @@ class HttpUtils{
     try {
       Map<String, String> headerMap = headers == null ? new Map() : headers;
       Map<String, String> paramMap = params == null ? new Map() : params;
-
+      //添加cookie
+      //关于cookie，token详细介绍看我这篇博客：https://github.com/yangchong211/YCBlogs/blob/master/android/%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3/06.Cookie%E3%80%81Session%E3%80%81Token%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86.md
+      SharedPreferences sp = await SharedPreferences.getInstance();
+      String cookie = sp.get("cookie");
+      if(cookie==null || cookie.length==0){
+      }else{
+        headerMap['Cookie'] = cookie;
+      }
       http.Response res;
       if (POST == method) {
-        print("POST:URL="+url);
-        print("POST:BODY="+paramMap.toString());
+        ToastUtils.showPrint("POST:URL="+url);
+        ToastUtils.showPrint("POST:BODY="+paramMap.toString());
         res = await http.post(url, headers: headerMap, body: paramMap);
       } else {
-        print("GET:URL="+url);
+        ToastUtils.showPrint("GET:URL="+url);
         res = await http.get(url, headers: headerMap);
       }
 
@@ -89,7 +98,11 @@ class HttpUtils{
       errorMsg = map['errorMsg'];
       data = map['data'];
 
-      // callback返回data,数据类型为dynamic
+      if(url.contains(AndroidApi.LOGIN)){
+        SharedPreferences sp = await SharedPreferences.getInstance();
+        sp.setString("cookie", res.headers['set-cookie']);
+      }
+      //callback返回data,数据类型为dynamic
       //errorCallback中为了方便我直接返回了String类型的errorMsg
       if (callback != null) {
         if (errorCode >= 0) {
@@ -107,7 +120,7 @@ class HttpUtils{
     if (errorCallback != null) {
       errorCallback(errorMsg);
     }
-    print("errorMsg :"+errorMsg);
+    ToastUtils.showPrint("errorMsg :"+errorMsg);
   }
 
 }

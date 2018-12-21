@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:ycflutter/pages/detail/ArticleDetailPage.dart';
 
+
+/*
+ * <pre>
+ *     @author yangchong
+ *     blog  : https://github.com/yangchong211
+ *     time  : 2018/9/11
+ *     desc  : 轮播图view
+ *     revise:
+ * </pre>
+ */
 class BannerView extends StatefulWidget {
 
-
   var data;
-
-  BannerView(this.data);
+  BannerView(data){
+    this.data = data;
+  }
 
   @override
   State<StatefulWidget> createState() {
@@ -13,8 +24,7 @@ class BannerView extends StatefulWidget {
   }
 }
 
-class BannerViewState extends State<BannerView>
-    with SingleTickerProviderStateMixin {
+class BannerViewState extends State<BannerView> with SingleTickerProviderStateMixin {
   TabController tabController;
   List data;
 
@@ -23,8 +33,7 @@ class BannerViewState extends State<BannerView>
   @override
   void initState() {
     super.initState();
-    tabController =
-        new TabController(length: data == null ? 0 : data.length, vsync: this);
+    tabController = new TabController(length: data == null ? 0 : data.length, vsync: this);
   }
 
   @override
@@ -44,7 +53,7 @@ class BannerViewState extends State<BannerView>
         item['link'] = item['url'];
         items.add(new GestureDetector(
             onTap: () {
-              _handOnItemClick(item);
+              onBannerClick(item);
             },
             child: AspectRatio(
               aspectRatio: 2.0 / 1.0,
@@ -77,9 +86,11 @@ class BannerViewState extends State<BannerView>
     );
   }
 
-  void _handOnItemClick(itemData) {
-//    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-//      return new ArticleDetailPage(title:itemData['title'],url: itemData['link']);
-//    }));
+  //轮播图点击事件
+  //https://github.com/yangchong211/YCBlogs
+  void onBannerClick(itemData) {
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      return new ArticleDetailPage(title:itemData['title'],url: itemData['link']);
+    }));
   }
 }

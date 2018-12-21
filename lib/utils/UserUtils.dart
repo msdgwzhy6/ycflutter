@@ -22,7 +22,6 @@ class UserUtils {
     SharedPreferences sp = await SharedPreferences.getInstance();
     await sp.setString(username, userName);
     await sp.setBool(login, true);
-
   }
 
   //清除用户登陆的信息

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:ycflutter/api/AndroidApi.dart';
 import 'package:ycflutter/api/HttpUtils.dart';
-import 'package:ycflutter/pages/detail/ArticleDetailPage.dart';
 import 'package:ycflutter/res/YcColors.dart';
 import 'package:ycflutter/utils/ToastUtils.dart';
 import 'package:ycflutter/utils/UserUtils.dart';

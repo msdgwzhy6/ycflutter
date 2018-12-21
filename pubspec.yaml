@@ -27,3 +27,4 @@ flutter:
   assets:
     - lib/image/ic_launcher_round.png
     - lib/image/zhy.jpg
+    - lib/image/ic_person.jpg

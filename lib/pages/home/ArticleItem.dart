@@ -93,10 +93,13 @@ class ArticleView  extends State<ArticleItem> {
             onCollectClick(widget.itemData);
           },
         ),
+        //分割间距
+        new Padding(
+          padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+        ),
         new GestureDetector(
           child: new Icon(
-            Icons.share ,
-            color: isCollect ? YcColors.colorRed : null,
+            Icons.share , color: YcColors.colorPrimary ,
           ),
           onTap: () {
             //分享点击事件

@@ -1,30 +1,99 @@
-
-
-//import 'package:flutter/widgets.dart';
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ycflutter/pages/search/HotFriendPage.dart';
+import 'package:ycflutter/pages/search/SearchListPage.dart';
+import 'package:ycflutter/res/YcColors.dart';
 
 
-
+/*
+ * <pre>
+ *     @author yangchong
+ *     blog  : https://github.com/yangchong211
+ *     time  : 2018/11/18
+ *     desc  : 搜索页面
+ *     revise:
+ * </pre>
+ */
 class SearchPage extends  StatefulWidget{
 
-  String searchStr;
-  SearchPage(this.searchStr);
+  String search;
+  SearchPage(searchStr){
+    this.search = searchStr;
+  }
 
   @override
   State<StatefulWidget> createState() {
-    return new SearchState(searchStr);
+    return new SearchState(search);
   }
 
 }
 
-
-
 class SearchState extends State<SearchPage> {
-  SearchState(String searchStr);
+
+  TextEditingController searchController = new TextEditingController();
+  SearchListPage searchListPage;
+  String search ;
+
+  SearchState(String search){
+    this.search = search;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return null;
+    TextField searchField = initSearchText();
+    bool a = searchController.text==null||searchController.text.isEmpty;
+    return new Scaffold(
+      appBar: new AppBar(
+        title: searchField,
+        actions: <Widget>[
+          new IconButton(
+              icon: new Icon(Icons.search),
+              onPressed: () {
+                changeContent();
+              }),
+          new IconButton(
+              icon: new Icon(Icons.close),
+              onPressed: () {
+                setState(() {
+                  searchController.clear();
+                });
+              }),
+        ],
+      ),
+      body: (a)?
+      new Center(
+        //热门事件
+        child : new HotFriendPage(),
+      ):searchListPage,
+    );
   }
+
+  @override
+  void initState() {
+    super.initState();
+    searchController = new TextEditingController(text: search);
+    changeContent();
+  }
+
+  //改变内容
+  void changeContent() {
+    setState(() {
+      //获取搜索的内容
+      var text = searchController.text;
+      searchListPage = new SearchListPage(new ValueKey(text));
+    });
+  }
+
+  TextField initSearchText() {
+    TextField searchText = new TextField(
+      autofocus: true,
+      decoration: new InputDecoration(
+        border: InputBorder.none,
+        fillColor: YcColors.colorWhite,
+        hintText: '逗比，请输入搜索关键词',
+      ),
+      controller: searchController,
+    );
+    return searchText;
+  }
+
 }
