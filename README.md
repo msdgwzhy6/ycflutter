@@ -97,7 +97,7 @@
 - 中国flutter中文网站：https://flutterchina.club/
 - 网络开源好项目：https://github.com/AweiLoveAndroid/Flutter-learning
 - flutter官方案例：https://github.com/flutter/flutter
-- https://github.com/ZQ330093887/GankFlutter
+- 鸿洋玩Android：http://www.wanandroid.com/index
 
 
 
