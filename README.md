@@ -16,6 +16,8 @@
 ### 00.项目下载与查看
 #### 0.1 下载apk
 - 已经打包好的apk存放到项目根目录apk文件夹下，可以直接下载安装。建议先安装看看效果！
+- [apk下载地址]()
+
 
 #### 0.2 项目
 - 关于项目的工程大概介绍
@@ -98,6 +100,7 @@
 - 网络开源好项目：https://github.com/AweiLoveAndroid/Flutter-learning
 - flutter官方案例：https://github.com/flutter/flutter
 - https://github.com/ZQ330093887/GankFlutter
+
 
 
 ### 08.如何辨别flutter与原生
