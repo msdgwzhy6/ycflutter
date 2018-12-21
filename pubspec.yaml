@@ -28,3 +28,8 @@ flutter:
     - lib/image/ic_launcher_round.png
     - lib/image/zhy.jpg
     - lib/image/ic_person.jpg
+    - lib/image/image1.jpg
+    - lib/image/image2.jpg
+    - lib/image/image3.jpg
+    - lib/image/image4.jpg
+    - lib/image/image5.png

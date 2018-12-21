@@ -147,7 +147,7 @@ class CollectListPageState extends State<CollectListPage> {
       ],
     );
 
-    Row chapterName = new Row(
+    Row collect = new Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         new GestureDetector(
@@ -173,7 +173,7 @@ class CollectListPageState extends State<CollectListPage> {
         ),
         new Padding(
           padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 10.0),
-          child: chapterName,
+          child: collect,
         ),
       ],
     );

@@ -20,7 +20,7 @@ class MainDartState extends State<MainDart> with TickerProviderStateMixin {
   //默认索引
   int positionIndex = 0;
   //底部导航栏
-  var mainTitles = ['首页', '发现','Todo', '我的'];
+  var mainTitles = ['首页', '发现','其他', '我的'];
   var indexStack;
   List<BottomNavigationBarItem> navigationViews;
   final navigatorKey = GlobalKey<NavigatorState>();
@@ -105,7 +105,7 @@ class MainDartState extends State<MainDart> with TickerProviderStateMixin {
         backgroundColor: Colors.black,
       ),
       new BottomNavigationBarItem(
-        icon: const Icon(Icons.add),
+        icon: const Icon(Icons.devices_other),
         title: new Text(mainTitles[2]),
         backgroundColor: Colors.black,
       ),
